@@ -25,8 +25,8 @@ block content
     div(class = "row")
       each item,index in results
         div(class= "col-sm-2", onclick=`buy(${index})`) Brand: #{item.make}
-        div(class= "col-sm-2", onclick=`buy(${index})`) Quantity: #{item.model}
-        div(class= "col-sm-2", onclick=`buy(${index})`) Cost: #{item.year}
+        div(class= "col-sm-2", onclick=`buy(${index})`) model: #{item.model}
+        div(class= "col-sm-2", onclick=`buy(${index})`) year: #{item.year}
         br
         br
         br
