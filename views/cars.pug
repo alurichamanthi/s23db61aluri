@@ -2,3 +2,40 @@ extends layout
 
 block content
   h1= title
+  p Welcome to nwmsu
+  -
+    let results = [
+      {
+        "make": "Toyota",
+        "model": "camry",
+        "year": 100
+      },
+      {
+        "make": "Honda",
+        "model": "civic",
+        "year": 2019
+      },
+      {
+        "make": "Ford",
+        "model": "F-150",
+        "year": 2022
+      },                   
+    ]
+  div(class= "container-fluid")
+    div(class = "row")
+      each item,index in results
+        div(class= "col-sm-2", onclick=`buy(${index})`) Brand: #{item.make}
+        div(class= "col-sm-2", onclick=`buy(${index})`) Quantity: #{item.model}
+        div(class= "col-sm-2", onclick=`buy(${index})`) Cost: #{item.year}
+        br
+        br
+        br
+        
+
+        
+  script.
+    function buy(itemNum){
+      alert(`You have purchased item ${itemNum+1}`)
+    }
+
+ 
