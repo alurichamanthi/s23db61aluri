@@ -24,7 +24,7 @@ block content
   div(class= "container-fluid")
     div(class = "row")
       each item,index in results
-        div(class= "col-sm-2", onclick=`buy(${index})`) name: #{item.cost}
+        div(class= "col-sm-2", onclick=`buy(${index})`) Animal_name: #{item.name}
         div(class= "col-sm-2", onclick=`buy(${index})`) lifespan: #{item.lifespan}
         div(class= "col-sm-2", onclick=`buy(${index})`) cost: #{item.cost}
         br
