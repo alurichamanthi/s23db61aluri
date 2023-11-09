@@ -4,26 +4,10 @@ block content
   h1= title
   p Welcome to nwmsu
   -
-    let results = [
-      {
-        "name": "Dogs",
-        "lifespan": "10 years",
-        "cost": 1000
-      },
-      {
-        "name": "Cats",
-        "lifespan": "15 years",
-        "cost": 2000
-      },
-      {
-        "name": "Goldfish",
-        "lifespan": "25 years",
-        "cost": 3000
-      },                   
-    ]
+    let result = results
   div(class= "container-fluid")
     div(class = "row")
-      each item,index in results
+      each item,index in result
         div(class= "col-sm-2", onclick=`buy(${index})`) Animal_name: #{item.name}
         div(class= "col-sm-2", onclick=`buy(${index})`) lifespan: #{item.lifespan}
         div(class= "col-sm-2", onclick=`buy(${index})`) cost: #{item.cost}
