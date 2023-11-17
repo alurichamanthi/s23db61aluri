@@ -1,25 +1,18 @@
+
 extends layout
-
-block content
-  h1= title
-  p Welcome to nwmsu
-  -
-    let result = results
-  div(class= "container-fluid")
-    div(class = "row")
-      each item,index in result
-        div(class= "col-sm-2", onclick=`buy(${index})`) Animal_name: #{item.name}
-        div(class= "col-sm-2", onclick=`buy(${index})`) lifespan: #{item.lifespan}
-        div(class= "col-sm-2", onclick=`buy(${index})`) cost: #{item.cost}
-        br
-        br
-        br
-        
-
-        
-  script.
-    function buy(itemNum){
-      alert(`You have purchased item ${itemNum+1}`)
-    }
-
  
+block content
+  h1=title
+  - let items = results
+ 
+  div(class="container-fluid")
+    div(class="row m-1")
+      each item in items
+        - let destination = `/animals/update?id=${item._id}`
+        div(class="row-sm-2 m-1") Animal #{item.name}(#{item.lifespan}) is #{item.cost}
+        button.btn(class="btn-primary ml-1", onclick=`dispatch("${destination}")`) Update
+ 
+  script.
+    function dispatch(path) {
+      window.location.href = path;
+    }

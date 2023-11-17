@@ -6,22 +6,22 @@ block content
  else
   - let animalsid = toShow._id
   - let name = toShow.name
-  - let lifespane = toShow.lifespan
+  - let lifespan = toShow.lifespan
   - let cost = toShow.cost
   div.row(class='mb-2')
    div.mr-1 ID is
    div #{animalsid}
-  - let actionid = "/resource/birds/" + animalsid
+  - let actionid = "/resource/animals/" + animalsid
   form(id='animalsForm', action= actionid, method="PUT")
    div.form-group
     label.animalsAttr(for='name') name
-    input#Name(type='text', name='name', value= name )
+    input#name(type='text', name='name', value= name )
    div.form-group
     label.animalsAttr(for='lifespan') lifespan
-    input#color(type='text', name='lifespan', value= lifespan )
+    input#lifespan(type='text', name='lifespan', value= lifespan )
    div.form-group
     label.animalsAttr(for='cost') cost
-    input#Age(type='number', name='cost', value= cost )
+    input#cost(type='number', name='cost', value= cost )
    input(type="submit")
  
   script.
