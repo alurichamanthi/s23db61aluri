@@ -1,17 +1,30 @@
-
 extends layout
- 
+
 block content
   h1=title
   - let items = results
- 
+
   div(class="container-fluid")
-    div(class="row m-1")
-      each item in items
-        - let destination = `/animals/update?id=${item._id}`
-        div(class="row-sm-2 m-1") Animal #{item.name}(#{item.lifespan}) is #{item.cost}
-        button.btn(class="btn-primary ml-1", onclick=`dispatch("${destination}")`) Update
- 
+    // Create button at the top
+    div(class="row-sm-2 m-1")
+      button.btn(class="btn btn-success", onclick="dispatch('/Earrings/create')") Create
+
+    each item in items
+      - let updateDestination = `/animals/update?id=${item._id}`
+      - let detailDestination = `/animals/detail?id=${item._id}`
+      - let deleteDestination = `/animals/delete?id=${item._id}`
+
+      div(class="row-sm-2 m-1") Animal #{item.name}(#{item.lifespan}) is #{item.cost}
+      
+      // Update button
+      button.btn(class="btn btn-warning", onclick=`dispatch("${updateDestination}")`) Update
+
+      // Detail button
+      button.btn(class="btn btn-info", onclick=`dispatch("${detailDestination}")`) Detail
+
+      // Delete button
+      button.btn(class="btn btn-danger", onclick=`dispatch("${deleteDestination}")`) Delete
+
   script.
     function dispatch(path) {
       window.location.href = path;

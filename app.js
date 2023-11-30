@@ -89,6 +89,24 @@ const connectionString =
   process.env.MONGO_CON
 mongoose = require('mongoose');
 mongoose.connect(connectionString);
+
+var Account =require('./models/accounts');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
+var app = express();
+
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+// passport config
+// Use the existing connection
+// The Account model
 //Get the default connection
 var db = mongoose.connection;
 //Bind connection to error event
@@ -96,8 +114,6 @@ db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
 db.once("open", function () {
   console.log("Connection to DB succeeded")
 });
-
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
